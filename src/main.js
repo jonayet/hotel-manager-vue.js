@@ -8,6 +8,11 @@ import router from './router'
 import store from './store'
 import 'vuetify/dist/vuetify.min.css'
 
+const baseElems = document.getElementsByTagName('base')
+if (baseElems.length > 0) {
+  baseElems[0].href = `${process.env.PUBLIC_URL || '/'}`
+}
+
 Vue.config.productionTip = false
 Vue.use(Vuetify)
 Vue.use(Vuex)

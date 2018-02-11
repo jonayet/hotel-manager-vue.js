@@ -2,6 +2,9 @@
 
 > Hotel Manager SPA using Vue.js
 
+## Demo
+https://jonayet.github.io/hotel-manager-vue.js
+
 ## Build Setup
 
 ``` bash
