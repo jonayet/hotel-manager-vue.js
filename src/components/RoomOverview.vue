@@ -4,42 +4,36 @@
       Booking Overview
     </div>
 
-<v-container grid-list-md text-xs-center>
-    <v-layout row wrap fill-height>
-      <div v-for="room of rooms" :key="room.id">
-            <Room :room="room" :booking="room.booking"/>
-      </div>
-    </v-layout>
-</v-container>
-
+    <v-container grid-list-md text-xs-center>
+        <v-layout row wrap fill-height>
+          <div v-for="room of rooms" :key="room.id">
+                <Room :room="room" :booking="room.booking"/>
+          </div>
+        </v-layout>
+        <v-btn fab dark color="indigo" @click="bookRoom()">
+          <v-icon dark>add</v-icon>
+        </v-btn>
+    </v-container>
   </div>
 </template>
 
 <script>
-import moment from 'moment';
+import { mapGetters, mapActions } from 'vuex'
 import Room from '@/components/Room'
 
 export default {
   name: 'RoomOverview',
   data: () => ({
-    rooms: [
-      {
-        id: '1',
-        label: 'Room 1',
-        isAvailable: false,
-        booking: {
-          name: 'John Doe',
-          checkin: moment().format('DD/MM/YY hh:mm:ss a'),
-          checkout: moment().format('DD/MM/YY hh:mm:ss a')
-        }
-      },
-      {
-        id: '2',
-        label: 'Room 2',
-        isAvailable: true
-      }
-    ]
+
   }),
+  computed: mapGetters('rooms', {
+    rooms: 'all'
+  }),
+  methods: {
+    ...mapActions('rooms', {
+      bookRoom: 'book'
+    })
+  },
   components: {
     Room
   }

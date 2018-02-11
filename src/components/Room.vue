@@ -2,6 +2,7 @@
 <v-flex xs12>
   <v-card>
     <v-card-text>
+      <v-checkbox value="John"></v-checkbox>
       <v-list three-line subheader>
         <v-list-tile>
           <v-list-tile-content>
